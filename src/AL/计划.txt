@@ -1,0 +1,21 @@
+TaskList:
+	PCInfo
+	PCAction
+	HuggingFace封装与集成
+	LangChain封装集成
+	RAG封装与集成
+	数据生成、增强等
+	pipeline设计
+	...
+
+
+每周一个没用小工具(无序)：
+	展示个人PC信息-windows
+	打开与关闭应用
+	读取与运行python代码
+	模型管理：下载与删除
+	模型使用
+	模型训练
+	模型微调
+	基础AI Chat
+	...
