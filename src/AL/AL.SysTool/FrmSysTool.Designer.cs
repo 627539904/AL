@@ -34,10 +34,12 @@
             lbScreenNum = new Label();
             lbScreenInch = new Label();
             lbScreenSize = new Label();
+            lbMouseLoc = new Label();
             lbResolution = new Label();
             label21 = new Label();
             label16 = new Label();
             lbScreenSizeaaa = new Label();
+            label12 = new Label();
             label20 = new Label();
             gbGPU = new GroupBox();
             lbGPUDriverVersion = new Label();
@@ -66,6 +68,9 @@
             label2 = new Label();
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            timerQuick = new System.Windows.Forms.Timer(components);
+            label15 = new Label();
+            lbFormLoc = new Label();
             gbSysInfo.SuspendLayout();
             groupBox1.SuspendLayout();
             gbGPU.SuspendLayout();
@@ -97,14 +102,16 @@
             groupBox1.Controls.Add(lbScreenNum);
             groupBox1.Controls.Add(lbScreenInch);
             groupBox1.Controls.Add(lbScreenSize);
+            groupBox1.Controls.Add(lbMouseLoc);
             groupBox1.Controls.Add(lbResolution);
             groupBox1.Controls.Add(label21);
             groupBox1.Controls.Add(label16);
             groupBox1.Controls.Add(lbScreenSizeaaa);
+            groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(label20);
-            groupBox1.Location = new Point(408, 168);
+            groupBox1.Location = new Point(408, 152);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(200, 103);
+            groupBox1.Size = new Size(200, 119);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "显示器";
@@ -135,6 +142,16 @@
             lbScreenSize.Size = new Size(31, 17);
             lbScreenSize.TabIndex = 1;
             lbScreenSize.Text = "0* 0";
+            // 
+            // lbMouseLoc
+            // 
+            lbMouseLoc.AutoSize = true;
+            lbMouseLoc.ForeColor = Color.Red;
+            lbMouseLoc.Location = new Point(74, 85);
+            lbMouseLoc.Name = "lbMouseLoc";
+            lbMouseLoc.Size = new Size(34, 17);
+            lbMouseLoc.TabIndex = 1;
+            lbMouseLoc.Text = "[X,Y]";
             // 
             // lbResolution
             // 
@@ -171,6 +188,15 @@
             lbScreenSizeaaa.Size = new Size(114, 17);
             lbScreenSizeaaa.TabIndex = 0;
             lbScreenSizeaaa.Text = "屏幕尺寸（mm）：";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(13, 85);
+            label12.Name = "label12";
+            label12.Size = new Size(68, 17);
+            label12.TabIndex = 0;
+            label12.Text = "鼠标位置：";
             // 
             // label20
             // 
@@ -221,6 +247,7 @@
             // lbUsedRAM_GPU
             // 
             lbUsedRAM_GPU.AutoSize = true;
+            lbUsedRAM_GPU.ForeColor = Color.Red;
             lbUsedRAM_GPU.Location = new Point(103, 53);
             lbUsedRAM_GPU.Name = "lbUsedRAM_GPU";
             lbUsedRAM_GPU.Size = new Size(43, 17);
@@ -230,6 +257,7 @@
             // lbFreeRAM_GPU
             // 
             lbFreeRAM_GPU.AutoSize = true;
+            lbFreeRAM_GPU.ForeColor = Color.Red;
             lbFreeRAM_GPU.Location = new Point(103, 36);
             lbFreeRAM_GPU.Name = "lbFreeRAM_GPU";
             lbFreeRAM_GPU.Size = new Size(43, 17);
@@ -308,6 +336,7 @@
             // lbUsedRAM
             // 
             lbUsedRAM.AutoSize = true;
+            lbUsedRAM.ForeColor = Color.Red;
             lbUsedRAM.Location = new Point(103, 53);
             lbUsedRAM.Name = "lbUsedRAM";
             lbUsedRAM.Size = new Size(43, 17);
@@ -317,6 +346,7 @@
             // lbFreeRAM
             // 
             lbFreeRAM.AutoSize = true;
+            lbFreeRAM.ForeColor = Color.Red;
             lbFreeRAM.Location = new Point(103, 36);
             lbFreeRAM.Name = "lbFreeRAM";
             lbFreeRAM.Size = new Size(43, 17);
@@ -435,15 +465,42 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
+            // timerQuick
+            // 
+            timerQuick.Tick += timerQuick_Tick;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(12, 9);
+            label15.Name = "label15";
+            label15.Size = new Size(40, 17);
+            label15.TabIndex = 0;
+            label15.Text = "Loc：";
+            // 
+            // lbFormLoc
+            // 
+            lbFormLoc.AutoSize = true;
+            lbFormLoc.ForeColor = Color.Red;
+            lbFormLoc.Location = new Point(58, 9);
+            lbFormLoc.Name = "lbFormLoc";
+            lbFormLoc.Size = new Size(34, 17);
+            lbFormLoc.TabIndex = 1;
+            lbFormLoc.Text = "[X,Y]";
+            // 
             // FrmSysTool
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(gbSysInfo);
+            Controls.Add(label15);
+            Controls.Add(lbFormLoc);
             Name = "FrmSysTool";
             Text = "系统工具";
             Load += FrmSysTool_Load;
+            LocationChanged += FrmSysTool_LocationChanged;
+            Move += FrmSysTool_Move;
             gbSysInfo.ResumeLayout(false);
             gbSysInfo.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -453,6 +510,7 @@
             gbRAM.ResumeLayout(false);
             gbRAM.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -496,5 +554,10 @@
         private Label label13;
         private Label label8;
         private System.Windows.Forms.Timer timer1;
+        private Label lbMouseLoc;
+        private Label label12;
+        private System.Windows.Forms.Timer timerQuick;
+        private Label label15;
+        private Label lbFormLoc;
     }
 }
