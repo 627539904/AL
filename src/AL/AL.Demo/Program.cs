@@ -1,10 +1,15 @@
 ﻿namespace AL.Demo
 {
-    internal class Program
+    internal partial class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("Hello, Demo!");
+            Console.WriteLine();
+
+            PCDemo.Demo();
+
+            Console.ReadKey();
         }
     }
 }
