@@ -10,4 +10,6 @@
 ### SysTool
 
 - 功能简介：系统信息面板，实时刷新
-- 界面截图：![image-systool](https://github.com/627539904/AL/blob/main/Docs/SysTool.png)
+- 界面截图：
+
+![image-systool](https://github.com/627539904/AL/blob/main/Docs/SysTool.png)
