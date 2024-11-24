@@ -17,5 +17,10 @@ namespace AL.PC.SysTools
         {
             ProcessHelper.RunCmd(cmd);
         }
+
+        public static void RunExe(string cmd)
+        {
+            ProcessHelper.RunExe(cmd);
+        }
     }
 }

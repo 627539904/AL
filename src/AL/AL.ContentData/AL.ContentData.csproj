@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Arvin.Lib\Arvin.Extensions\Arvin.Extensions.csproj" />
+    <ProjectReference Include="..\AL.PC\AL.PC.csproj" />
+  </ItemGroup>
+
+</Project>

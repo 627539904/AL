@@ -19,6 +19,14 @@ namespace AL.PC.SysTools
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
+
+                //FileName = exePath,
+                //WorkingDirectory = exePath.GetDirectoryFromPath(),
+                //UseShellExecute = false,
+                //CreateNoWindow = false,// 如果不需要看到cmd窗口，可以设置为true  
+                //RedirectStandardOutput = true,// 通常不需要重定向输出，除非你想捕获它  
+                //RedirectStandardError = true, // 同上
+                //Verb = "runas" // 尝试以管理员身份运行
             };
 
             using (Process process = Process.Start(startInfo))
@@ -50,6 +58,31 @@ namespace AL.PC.SysTools
                 process.Close();
             }
             return result;
+        }
+
+        public static void RunExe(string exePath)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo("cmd.exe", $"/c {exePath}")
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                WorkingDirectory = exePath.GetDirectoryFromPath(),
+                //FileName = exePath,
+                //WorkingDirectory = exePath.GetDirectoryFromPath(),
+                //UseShellExecute = false,
+                //CreateNoWindow = false,// 如果不需要看到cmd窗口，可以设置为true  
+                //RedirectStandardOutput = true,// 通常不需要重定向输出，除非你想捕获它  
+                //RedirectStandardError = true, // 同上
+                //Verb = "runas" // 尝试以管理员身份运行
+            };
+
+            using (Process process = Process.Start(startInfo))
+            {
+                // 等待进程退出  
+                //process.WaitForExit();
+                process.Close();
+            }
         }
 
         /// <summary>
