@@ -58,5 +58,18 @@ namespace AL.ControlLib
 
         #region Button
         #endregion
+
+        #region Label
+        public static void AddClickEvent_CopyText(this Label lb)
+        {
+            lb.Click += (sender,e)=> {
+                Label control = (Label)sender;
+                if (string.IsNullOrEmpty(control.Text))
+                    return;
+                Clipboard.SetText(control.Text);
+                MessageBox.Show("文本已复制到剪贴板！");
+            };
+        }
+        #endregion
     }
 }

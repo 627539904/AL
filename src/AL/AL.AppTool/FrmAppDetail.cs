@@ -1,4 +1,5 @@
-﻿using AL.PC.Models;
+﻿using AL.ControlLib;
+using AL.PC.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,26 +26,11 @@ namespace AL.AppTool
             this.lbInstallLoc.Text = AppInfo.InstallLocation;
             this.lbStartPath.Text= AppInfo.StartPath;
             this.lbUninstallPath.Text = AppInfo.UninstallString;
-        }
 
-        private void lbInstallLoc_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(this.lbInstallLoc.Text))
-                return;
-            Clipboard.SetText(this.lbInstallLoc.Text);
-            MessageBox.Show("文本已复制到剪贴板！");
-            //Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            //if (dialog.ShowDialog().GetValueOrDefault())
-            //{
-            //    Console.WriteLine("-----------" + dialog.FileName);
-            //    Console.WriteLine("-----------" + dialog.SafeFileName);
-
-            //    Console.WriteLine("------开始抽取图标-----");
-
-            //    // 将选择的文件名,输入给ExtractAssociatedIcon方法
-            //    Image img = System.Drawing.Icon.ExtractAssociatedIcon(dialog.FileName).ToBitmap();
-            //    img.Save(@"D:\toolbar\icon\" + dialog.SafeFileName + ".PNG");
-            //}
+            this.lbName.AddClickEvent_CopyText();
+            this.lbInstallLoc.AddClickEvent_CopyText();
+            this.lbStartPath.AddClickEvent_CopyText();
+            this.lbUninstallPath.AddClickEvent_CopyText();
         }
     }
 }

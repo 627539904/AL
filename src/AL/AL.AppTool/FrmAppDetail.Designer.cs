@@ -73,7 +73,6 @@
             lbInstallLoc.Size = new Size(28, 17);
             lbInstallLoc.TabIndex = 0;
             lbInstallLoc.Text = "Loc";
-            lbInstallLoc.Click += lbInstallLoc_Click;
             // 
             // lbStartPath
             // 
@@ -83,7 +82,6 @@
             lbStartPath.Size = new Size(50, 17);
             lbStartPath.TabIndex = 0;
             lbStartPath.Text = "Startup";
-            lbStartPath.Click += lbInstallLoc_Click;
             // 
             // lb33
             // 
@@ -102,7 +100,6 @@
             lbUninstallPath.Size = new Size(57, 17);
             lbUninstallPath.TabIndex = 0;
             lbUninstallPath.Text = "Uninstall";
-            lbUninstallPath.Click += lbInstallLoc_Click;
             // 
             // lb3
             // 

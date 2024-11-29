@@ -1,4 +1,5 @@
 ﻿using AL.PC.Models;
+using Arvin.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,11 @@ namespace AL.ContentData
         public string Content { get; set; }
         public string CachePath { get; set; } = basePath;
 
-        static string basePath = PCPath.DocumentsPath + @"\Cache\Html\";
+        public static string basePath = PCPath.DocumentsPath + @"\Cache\Html\";
         public void InitCachePath()
         {
-
             this.CachePath = basePath + PCPath.ReplaceInvalidFileNameChars(this.Url) + ".txt";
+            this.CachePath.InitDirectory();
         }
     }
 

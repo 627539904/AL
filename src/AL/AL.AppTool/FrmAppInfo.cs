@@ -115,7 +115,7 @@ namespace AL.AppTool
                     return false;
                 var matchList = value.Split(',').ToList();
                 string target = app.ToString().Replace("---Code:", "");
-                return target.IsContains(matchList);
+                return target.IsContainsAny(matchList);
             };
             List<AppInfo> classedApps = new List<AppInfo>();//分类后的软件
             foreach (var item in dicAppType)

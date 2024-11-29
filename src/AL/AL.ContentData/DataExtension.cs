@@ -1,4 +1,5 @@
-﻿using Arvin.Extensions;
+﻿using AL.PC;
+using Arvin.Extensions;
 
 namespace AL.ContentData
 {
@@ -14,6 +15,19 @@ namespace AL.ContentData
         {
             cache.InitCachePath();
             cache.CachePath.WriteFile(cache.Content);
+        }
+        #endregion
+
+        #region 默认路径
+        public static string DefaultImagePath()
+        {
+            return ImageData.basePath;
+        }
+        public static string UrlToImagePath(this string url)
+        {
+            string path= DefaultImagePath() + url.ToSafeFileName()+".png";
+            path.InitDirectory();
+            return path;
         }
         #endregion
     }

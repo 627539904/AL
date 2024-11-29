@@ -16,12 +16,15 @@ namespace AL.PC.Models
     /// </summary>
     public partial class WindowsInfo
     {
+        public static List<AppInfo> AppInfos = null;
         /// <summary>
         /// 获取已安装软件信息
         /// </summary>
         /// <returns></returns>
         public static List<AppInfo> GetInstalledAppInfos()
         {
+            if(!AppInfos.IsNullOrEmpty())
+                return AppInfos;
             List<AppInfo> appInfos = new List<AppInfo>();
             string SameApp = "";
 
@@ -83,9 +86,15 @@ namespace AL.PC.Models
             //{
             //    app?.Repair();
             //}
+            AppInfos = appInfos;
             return appInfos;
         }
-
+        public static AppInfo GetAppInfo(string displayName)
+        {
+            if(AppInfos.IsNullOrEmpty())
+                GetInstalledAppInfos();
+            return AppInfos.FirstOrDefault(a => a.DisplayName.IsContainsAny(displayName));
+        }
         public static string[] GetLocalDrives()
         {
             return Directory.GetLogicalDrives();
