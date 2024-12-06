@@ -75,7 +75,7 @@ namespace AL.Env
             }
             var types= Performance.GetCounterTypes();
             //将结果写入缓存文件
-            types.WriteAllLines(cachePath);
+            types.SaveToFile(cachePath);
             return types;
         }
 

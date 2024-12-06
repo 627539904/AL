@@ -25,7 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Arvin.Lib\Arvin.Extensions\Arvin.Extensions.csproj" />
-    <ProjectReference Include="..\..\..\..\Arvin\Arvin.PC.Cmd\Arvin.PC.Cmd.csproj" />
+    <ProjectReference Include="..\..\..\..\Arvin.Lib\Arvin.Helpers\Arvin.Helpers.csproj" />
+    <ProjectReference Include="..\..\..\..\Arvin\Arvin.API\Arvin.API.csproj" />
     <ProjectReference Include="..\AL.Common\AL.Common.csproj" />
   </ItemGroup>
 

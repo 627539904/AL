@@ -3,3 +3,5 @@
 		功能：SysInfo
 	AppTool
 		功能：AppInfo
+	KeyShowTool
+		功能：KeyShow

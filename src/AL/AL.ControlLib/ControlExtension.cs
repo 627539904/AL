@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AL.ControlLib.AControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,15 @@ namespace AL.ControlLib
                 Clipboard.SetText(control.Text);
                 MessageBox.Show("文本已复制到剪贴板！");
             };
+        }
+        #endregion
+
+
+        #region 隐藏图标
+        public static NotifyIconRightMenu<T> CreateMenu_NotifyIcon<T>(this T frm, NotifyIcon notifyIcon = null)
+            where T : Form
+        {
+            return new NotifyIconRightMenu<T>(frm).Init(notifyIcon);
         }
         #endregion
     }
