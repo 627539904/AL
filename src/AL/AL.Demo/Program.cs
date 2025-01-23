@@ -7,8 +7,9 @@
             Console.WriteLine("Hello, Demo!");
             Console.WriteLine();
 
+            AIDemo.Demo();
             //AppDemo.Demo();
-            BrowserDemo.Demo();
+            //BrowserDemo.Demo();
             //PCDemo.Demo();
 
             Console.ReadKey();

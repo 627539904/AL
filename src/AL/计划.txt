@@ -6,6 +6,7 @@ TaskList:
 	RAG封装与集成
 	数据生成、增强等
 	pipeline设计
+	AI
 	...
 
 

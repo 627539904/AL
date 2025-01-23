@@ -142,7 +142,7 @@ namespace AL.AppTool
             dgvAppType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //dgvAppType.AllowUserToAddRows = true;
             //dgvAppType.RowTemplate.Height = 50; // 设置行高以便按钮显示            
-            dgvAppType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;// 确保FullRowSelect属性为true，以便点击行中的任意单元格都会选中整行
+            //dgvAppType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;// 确保FullRowSelect属性为true，以便点击行中的任意单元格都会选中整行
 
             var tempList = dicAppType.ToIList(kvp => new DictionaryEntry(kvp.Key, kvp.Value));
             dictionaryList = new BindingList<DictionaryEntry>(tempList);
@@ -154,26 +154,31 @@ namespace AL.AppTool
 
             // 处理按钮点击事件
             //dgvAppType.CellContentClick += dgvAppType_CellContentClick;
-            dgvAppType.CellClick += new DataGridViewCellEventHandler(dgvAppType_CellClick);
-        }
-
-        private void dgvAppType_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // 检查点击的是否是有效的行和列
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            //dgvAppType.CellClick += new DataGridViewCellEventHandler(dgvAppType_CellClick);
+            dgvAppType.AddCellClickEvent(row =>
             {
-                // 获取点击的行
-                DataGridViewRow clickedRow = dgvAppType.Rows[e.RowIndex];
-
-                // 检查该行是否已被选中（在FullRowSelect为true时，点击任意单元格都会选中整行）
-                if (clickedRow.Selected)
-                {
-                    // 这里可以添加处理选中行的代码
-                    this.txtTypeKey.Text = clickedRow.Cells["Key"].Value.ToString();
-                    this.txtTypeValue.Text = clickedRow.Cells["Value"].Value.ToString();
-                }
-            }
+                this.txtTypeKey.Text = row.Cells["Key"].Value.ToString();
+                this.txtTypeValue.Text = row.Cells["Value"].Value.ToString();
+            },isRowSelected:true);
         }
+
+        //private void dgvAppType_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    // 检查点击的是否是有效的行和列
+        //    if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+        //    {
+        //        // 获取点击的行
+        //        DataGridViewRow clickedRow = dgvAppType.Rows[e.RowIndex];
+
+        //        // 检查该行是否已被选中（在FullRowSelect为true时，点击任意单元格都会选中整行）
+        //        if (clickedRow.Selected)
+        //        {
+        //            // 这里可以添加处理选中行的代码
+        //            this.txtTypeKey.Text = clickedRow.Cells["Key"].Value.ToString();
+        //            this.txtTypeValue.Text = clickedRow.Cells["Value"].Value.ToString();
+        //        }
+        //    }
+        //}
         private void btnAddType_Click(object sender, EventArgs e)
         {
             string key = this.txtTypeKey.Text;

@@ -1,9 +1,14 @@
 ﻿using AL.ControlLib.AControls;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.Control;
 
 namespace AL.ControlLib
@@ -42,17 +47,34 @@ namespace AL.ControlLib
 
 
         #region DataGridView
-        public static void RemoveBy<T>(this IList<T> source, Func<T, bool> predicate)
+        /// <summary>
+        /// DataGridView 单元格点击事件
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        /// <param name="action"></param>
+        /// <param name="isRowSelected">是否设置为行点击：即任意单元格选中均为选中整行</param>
+        public static void AddCellClickEvent(this DataGridView dataGridView, Action<DataGridViewRow> action,bool isRowSelected=true)
         {
-            source.Remove(source.FirstOrDefault(predicate));
+            if(isRowSelected)
+                dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.CellClick += (sender, e) => {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    // 获取点击的行
+                    DataGridViewRow clickedRow = dataGridView.Rows[e.RowIndex];
+
+                    // 检查该行是否已被选中（在FullRowSelect为true时，点击任意单元格都会选中整行）
+                    if (clickedRow.Selected)
+                    {
+                        action(clickedRow);
+                    }
+                }
+            };
         }
-        public static void RemoveAll<T>(this IList<T> source, Func<T, bool> predicate)
+        public static void BindList<T>(this DataGridView dgv, IList<T> list)
         {
-            var removeList = source.Where(predicate).ToList();
-            foreach (var item in removeList)
-            {
-                source.Remove(item);
-            }
+            var res = new BindingList<T>(list);
+            dgv.DataSource = res;
         }
         #endregion
 
@@ -82,4 +104,6 @@ namespace AL.ControlLib
         }
         #endregion
     }
+
+    
 }
