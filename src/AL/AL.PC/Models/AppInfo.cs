@@ -1,6 +1,7 @@
 ﻿using AL.PC.SysTools;
 using Arvin.Extensions;
 using Arvin.Helpers;
+using Arvin.LogHelper;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;

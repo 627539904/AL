@@ -1,5 +1,6 @@
 ﻿using Arvin.Extensions;
 using Arvin.Helpers;
+using Arvin.LogHelper;
 using IWshRuntimeLibrary;
 using Microsoft.Win32;
 using System;

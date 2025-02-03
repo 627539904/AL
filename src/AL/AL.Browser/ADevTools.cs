@@ -1,5 +1,6 @@
 ﻿using AL.ContentData;
 using Arvin.Helpers;
+using Arvin.LogHelper;
 using Microsoft.Extensions.Options;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
