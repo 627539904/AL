@@ -41,7 +41,7 @@ namespace AL.PC.SysTools
             return res;
         }
 
-        public static RunCmdModel RunCmd(string cmd, bool isRecData = true, string workDir = "")
+        public static RunCmdModel RunCmd(string cmd,bool isRecData = true, string workDir = "")
         {
             RunCmdModel res = new RunCmdModel()
             {
@@ -57,7 +57,6 @@ namespace AL.PC.SysTools
                 CreateNoWindow = true,
                 WindowStyle = ProcessWindowStyle.Hidden
             };
-
             Process process = new Process { StartInfo = startInfo };
 
             if (isRecData)
@@ -87,5 +86,19 @@ namespace AL.PC.SysTools
         public string WorkDir { get; set; }
         public StringBuilder Output { get; set; }
         public StringBuilder Error { get; set; }
+
+        public override string ToString()
+        {
+            string res = "";
+            if (Output != null)
+                return Output.ToString();
+            if( Error != null)
+                return Error.ToString();
+            return res;
+        }
+        public string GetValue()
+        {
+            return Output.ToString();
+        }
     }
 }
