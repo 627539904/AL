@@ -177,7 +177,7 @@ namespace AL.PC.Models
 
                     dic.Add(shortcutName, shortcut.TargetPath);
                     // 输出快捷方式的目标路径
-                    ALog.Deubg($"Shortcut: {shortcutName}, Target: {shortcut.TargetPath}");
+                    ALog.Debug($"Shortcut: {shortcutName}, Target: {shortcut.TargetPath}");
                 }
                 catch (Exception ex)
                 {

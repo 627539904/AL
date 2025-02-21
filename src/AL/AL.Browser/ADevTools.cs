@@ -85,7 +85,7 @@ namespace AL.Browser
             }
             catch (Exception ex)
             {
-                ALog.Deubg(ex.Message);
+                ALog.Debug(ex.Message);
             }
         }
     }
