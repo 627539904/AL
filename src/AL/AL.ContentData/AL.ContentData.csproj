@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\Arvin.Lib\Arvin.Extensions\Arvin.Extensions.csproj" />
     <ProjectReference Include="..\AL.PC\AL.PC.csproj" />
   </ItemGroup>
